@@ -1608,7 +1608,7 @@ axs.AuditRule.collectMatchingElements = function(a, b, c, d) {
 };
 axs.AuditRule.prototype.run = function(a) {
   a = a || {};
-  var b = "ignoreSelectors" in a ? a.ignoreSelectors : [], c = "maxResults" in a ? 500 : null, d = [];
+  var b = "ignoreSelectors" in a ? a.ignoreSelectors : [], c = "maxResults" in a ? a.maxResult : null, d = [];
   axs.AuditRule.collectMatchingElements("scope" in a ? a.scope : document, this.relevantElementMatcher_, d);
   var e = [];
   if (!d.length) {
@@ -1789,7 +1789,7 @@ axs.Audit.createReport = function(a, b) {
 };
 goog.exportSymbol("axs.Audit.createReport", axs.Audit.createReport);
 axs.Audit.accessibilityErrorMessage = function(a) {
-  for (var b = a.rule.severity == axs.constants.Severity.SEVERE ? "Error: " : "Warning: ", b = b + (a.rule.code + " (" + a.rule.heading + ") failed on the following " + (1 == a.elements.length ? "element" : "elements")), b = 1 == a.elements.length ? b + ":" : b + (" (1 - " + Math.min(5, a.elements.length) + " of " + a.elements.length + "):"), c = Math.min(a.elements.length, 5), d = 0;d < c;d++) {
+  for (var b = a.rule.severity == axs.constants.Severity.SEVERE ? "Error: " : "Warning: ", b = b + (a.rule.code + " (" + a.rule.heading + ") failed on the following " + (1 == a.elements.length ? "element" : "elements")), b = 1 == a.elements.length ? b + ":" : b + (" (1 - " + Math.min(500, a.elements.length) + " of " + a.elements.length + "):"), c = Math.min(a.elements.length, 500), d = 0;d < c;d++) {
     var e = a.elements[d], b = b + "\n";
     try {
       b += axs.utils.getQuerySelectorText(e);

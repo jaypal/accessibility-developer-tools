@@ -1608,7 +1608,7 @@ axs.AuditRule.collectMatchingElements = function(a, b, c, d) {
 };
 axs.AuditRule.prototype.run = function(a) {
   a = a || {};
-  var b = "ignoreSelectors" in a ? a.ignoreSelectors : [], c = "maxResults" in a ? a.maxResults : null, d = [];
+  var b = "ignoreSelectors" in a ? a.ignoreSelectors : [], c = "maxResults" in a ? 500 : null, d = [];
   axs.AuditRule.collectMatchingElements("scope" in a ? a.scope : document, this.relevantElementMatcher_, d);
   var e = [];
   if (!d.length) {
